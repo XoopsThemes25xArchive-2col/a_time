@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<{$xoops_langcode}>" lang="<{$xoops_langcode}>">
+<head>
+    <!-- Assign Theme name -->
+    <{assign var=theme_name value=$xoTheme->folderName}>
+	<{assign var=theme_name value=$xoTheme->folderName|cat:'/xotpl'}>
+
+    <!-- Title and meta -->
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <meta http-equiv="content-language" content="<{$xoops_langcode}>" />
+    <meta http-equiv="content-type" content="text/html; charset=<{$xoops_charset}>" />
+    <title><{if $xoops_pagetitle !=''}><{$xoops_pagetitle}> - <{/if}><{$xoops_sitename}></title>
+    <meta name="robots" content="<{$xoops_meta_robots}>" />
+    <meta name="keywords" content="<{$xoops_meta_keywords}>" />
+    <meta name="description" content="<{$xoops_meta_description}>" />
+    <meta name="rating" content="<{$xoops_meta_rating}>" />
+    <meta name="author" content="<{$xoops_meta_author}>" />
+    <meta name="copyright" content="<{$xoops_meta_copyright}>" />
+    <meta name="generator" content="XOOPS" />
+
+    <!-- Rss -->
+    <link rel="alternate" type="application/rss+xml" title="" href="<{xoAppUrl backend.php}>" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/ico" href="<{xoImgUrl icons/favicon.ico}>" />
+    <link rel="icon" type="image/png" href="<{xoImgUrl icons/favicon.png}>" />
+
+    <!-- Sheet Css -->
+    <link rel="stylesheet" type="text/css" media="all" title="Style sheet" href="<{xoAppUrl xoops.css}>" />
+    <link rel="stylesheet" type="text/css" media="all" title="Style sheet" href="<{xoImgUrl css/style.css}>" />
+
+    <!-- customized header contents -->
+    <{$xoops_module_header}>
+</head>
+<body id="<{$xoops_dirname}>" class="<{$xoops_langcode}>">
+
+<!-- Start Header -->
+<table cellspacing="0" align="center" id="header">
+    <tr>
+        <td id="headerlogo">			
+			<div id="menu">
+			  <ul>
+			  		<li><a href="#"><span>≈ ’· »‰«</span></a></li>
+					<li><a href="#"><span>«·√Œ»«—</span></a></li>
+					<li><a href="#"><span>„ﬂ »… «· ‰“Ì·</span></a></li>
+					<li><a href="#"><span>√·»Ê„ «·’Ê—</span></a></li>
+					<li><a class="active" href="#"><span>«·—∆Ì”Ì…</span></a></li>
+			  </ul>
+			</div>
+			<div id="sidebar_search">
+				<form action="<{$xoops_url}>/search.php" method="get">
+						»ÕÀ :
+						<input type="text" value="" name="query" id="main_search_val" /><input type="hidden" name="action" value="results" />
+						<input type="image" src="<{xoImgUrl img/button_search.gif}>" alt="search" id="main_search_sub" />
+				</form>
+			</div>	
+		</td>
+    </tr>
+    <tr>
+        <td id="headerbar" colspan="2">
+		<div id="logo"><a href="http://demo.templateworld.com/wordpress-theme/"><{$xoops_sitename}></a></div>
+		<p><{$xoops_pagetitle}></p>
+		</td>
+    </tr>
+</table>
+<!-- End header -->
+
+<table cellspacing="0" id="xo-content" align="center">
+    <tr>
+			<!-- Start right blocks loop -->
+				<td>
+				<div id="login_box">
+					<{if !$xoops_isuser}>
+						<h2 class="title">œŒÊ· «·√⁄÷«¡</h2>
+						<div id="login_body">
+							<form action="<{xoAppUrl /user.php op=login}>" method="post">
+									<p class="login_input"><input type="text" value="≈”„ «·œŒÊ·" name="uname" id="login_user" onclick="this.value=''" /></p>
+									<p class="login_input"><input type="password" value="123456" name="pass" id="login_pass" onclick="this.value=''" /></p>
+									<p><input type="image" src="<{xoImgUrl img/button_login.png}>" alt="login" name="wp-submit" id="login_submit" /><input type="checkbox" name="rememberme" value="forever" id="login_rememberme" /><label for="login_rememberme"> –ﬂ—‰Ì</label></p>
+								<{if isset($block.lang_rememberme)}>
+									<input type="checkbox" name="rememberme" value="On" class ="formButton" /><{$block.lang_rememberme}><br />
+								<{/if}>
+								<input type="hidden" name="xoops_redirect" value="<{$xoops_requesturi}>" />
+								<input type="hidden" name="op" value="login" /><br />
+							</form>
+						</div>
+					<{else}>
+							<h2 class="title">·ÊÕ… «· Õﬂ„</h2>
+						<div id="login_body">
+						<b>„—Õ»«</b><br/><br/>
+										<{xoInboxCount assign=pmcount}>
+						<a href="<{xoAppUrl viewpmsg.php}>" title="<{$smarty.const._THEME_INBOX}>">
+						<{if $pmcount}>
+							<img src="<{xoImgUrl /icons/users/inbox-full.png}>" alt="<{$pmcount}> <{$smarty.const._THEME_INBOX_NOTREAD}>"/>
+						<{else}>
+							<img src="<{xoImgUrl /icons/users/inbox.png}>" alt="<{$smarty.const._THEME_INBOX}>"/>
+						<{/if}>
+						</a>
+						<a href="<{xoAppUrl /notifications.php}>" title="<{$smarty.const._THEME_NOTIFICATIONS}>"><img src="<{xoImgUrl /icons/users/note_view.png}>" alt="<{$smarty.const._THEME_NOTIFICATIONS}>"/></a>
+						<a href="<{xoAppUrl /user.php}>" title="<{$smarty.const._THEME_PROFILE}>"><img src="<{xoImgUrl /icons/users/profile.png}>" alt="<{$smarty.const._THEME_PROFILE}>"/></a>
+
+						<{if $xoops_isadmin}>
+							<a href="<{xoAppUrl /admin.php}>" title="<{$smarty.const._THEME_ADMINISTRATION}>"><img src="<{xoImgUrl /icons/users/configuration.png}>" alt="<{$smarty.const._THEME_ADMINISTRATION}>" /></a>
+						<{/if}>
+						<a href="<{xoAppUrl /user.php op=logout}>" title="<{$smarty.const._THEME_LOGOUT}>" ><img src="<{xoImgUrl /icons/users/exit.png}>" alt="<{$smarty.const._THEME_LOGOUT}>"/></a>
+						<br/><br/><{$smarty.now|date_format:"%A, %B %e, %Y"}>
+						</div>
+					<{/if}>
+				</div>
+				</td>
+			<!-- End right blocks loop -->
+        <td id="centercolumn" rowspan="2">
+            <!-- Display center blocks if any -->
+            <{if $xoBlocks.page_topleft or $xoBlocks.page_topcenter or $xoBlocks.page_topright}>
+                <table cellspacing="0">
+                    <tr>
+                        <td id="centerCcolumn" colspan="2">
+                        <!-- Start center-center blocks loop -->
+                        <{foreach item=block from=$xoBlocks.page_topcenter}>
+                            <{includeq file="$theme_name/theme_blockcenter_c.html"}>
+                        <{/foreach}>
+                        <!-- End center-center blocks loop -->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="centerLcolumn">
+                        <!-- Start center-left blocks loop -->
+                        <{foreach item=block from=$xoBlocks.page_topleft}>
+                            <{includeq file="$theme_name/theme_blockcenter_l.html"}>
+                        <{/foreach}>
+                        <!-- End center-left blocks loop -->
+                        </td>
+                        <td id="centerRcolumn">
+                        <!-- Start center-right blocks loop -->
+                        <{foreach item=block from=$xoBlocks.page_topright}>
+                            <{includeq file="$theme_name/theme_blockcenter_r.html"}>
+                        <{/foreach}>
+                        <!-- End center-right blocks loop -->
+                        </td>
+                    </tr>
+                </table>
+            <{/if}>
+            <!-- End center top blocks loop -->
+
+            <!-- Start content module page -->
+            <{if $xoops_contents && ($xoops_contents != ' ') }><div id="content"><{$xoops_contents}></div><{/if}>
+            <!-- End content module -->
+
+            <!-- Start center bottom blocks loop -->
+            <{if $xoBlocks.page_bottomleft or $xoBlocks.page_bottomright or $xoBlocks.page_bottomcenter}>
+                <table cellspacing="0">
+                    <{if $xoBlocks.page_bottomcenter}>
+                        <tr>
+                            <td id="bottomCcolumn" colspan="2">
+                            <{foreach from=$xoBlocks.page_bottomcenter item=block}>
+                                <{include file="$theme_name/theme_blockcenter_c.html"}>
+                            <{/foreach}>
+                            </td>
+                        </tr>
+                    <{/if}>
+
+                    <{if $xoBlocks.page_bottomleft or $xoBlocks.page_bottomright}>
+                        <tr>
+                            <td id="bottomLcolumn">
+                            <{foreach from=$xoBlocks.page_bottomleft item=block}>
+                                <{include file="$theme_name/theme_blockcenter_l.html"}>
+                            <{/foreach}>
+                            </td>
+
+                            <td id="bottomRcolumn">
+                            <{foreach from=$xoBlocks.page_bottomright item=block}>
+                                <{include file="$theme_name/theme_blockcenter_r.html"}>
+                            <{/foreach}>
+                            </td>
+                        </tr>
+                    <{/if}>
+                </table>
+            <{/if}>
+            <!-- End center bottom blocks loop -->
+        </td>
+    </tr>
+	<tr>
+		<td id="sideBar">
+		<{foreach item=block from=$xoBlocks.canvas_left}>
+			<{includeq file="$theme_name/theme_blockleft.html"}>
+		<{/foreach}>
+		<{foreach item=block from=$xoBlocks.canvas_right}>
+			<{includeq file="$theme_name/theme_blockright.html"}>
+		<{/foreach}>
+		</td>
+	</tr>
+</table>
+
+<!-- Start footer -->
+<table cellspacing="0">
+<tr id="footerbar">
+    <td></td>
+</tr>
+<tr>
+	<td id="footerdes"><{$xoops_footer}> <br/><br/> Design by <a href="http://www.templateworld.com/">template world</a> Xoopsed by <a href="http://xo-aminoss.info/" title="Designer's Link" target="_blank">Xo-Aminoss</a></td>
+</tr>
+</table>
+<!-- End footer -->
+<!--{xo-logger-output}-->
+</body>
+</html>
